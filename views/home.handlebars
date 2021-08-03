@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    write
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/home/write" method="POST">
+            <textarea style="resize: none;" class="form-control" rows="5" placeholder="E aí?!" name="textarea"></textarea>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>         
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-between">
+    <div class="col-sm-8 bg-primary offset-sm-1">
+        {{#each posts}}
+          <div class="card">
+            <div class="card card-body mb-2">
+              {{post}}
+              <form action="/home/delete/{{_id}}" method="POST">
+                <button>Apagar</button>
+              </form>
+              <hr>
+              <small>{{posted}}</small>
+            </div>
+          </div>
+        {{else}}
+          aqui está vazio :/
+        {{/each}}
+    </div>
+    
+    <div class="col-sm-2 bg-success">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus, justo eu tempus luctus, dui neque tempor dui, a dictum enim erat aliquet enim. Nam ornare elit quis sagittis ultrices. Nulla sed odio ut nisi luctus posuere nec vitae libero. Cras interdum mauris a arcu pulvinar, eget finibus magna facilisis. Nullam massa arcu, maximus eu semper id, sollicitudin in dolor. Sed sit amet dui ac nunc feugiat vulputate id in justo. Suspendisse scelerisque velit accumsan aliquam porttitor.
+    </div>
+  </div>
+</div>
