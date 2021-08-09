@@ -21,7 +21,7 @@ app.use(express.json())
 app.use(session({
     secret: 'sksecret',
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: true
 }))
 
 app.use(passport.initialize())

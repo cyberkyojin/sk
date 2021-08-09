@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 require('../models/Users')
 const Users = mongoose.model('users')
 const passport = require('passport')
+const auth = require('../helpers/priv')
 
 router.get('/signup', (req, res) => {
     res.render('signup')
@@ -80,7 +81,7 @@ router.post('/login', (req, res, next) => {
     })(req, res, next)
 }) 
 
-router.get('/logout', (req, res) => {
+router.get('/logout', auth, (req, res) => {
     req.logout()
     req.flash('success_msg', 'Deslogado.')
     res.redirect('/u/login')
