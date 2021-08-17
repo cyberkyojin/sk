@@ -1,7 +1,53 @@
 <div class="container-fluid">
     <div class="row justify-content-between">
         <div class="col-sm-8 bg-primary offset-sm-1">
-            teste
+            <img src="images/{{UsersPub.profPic}}" class="img-fluid my-2"  style="width: 200px;height: 200px;object-fit: cover;border-radius: 100px;">
+            <a href="#" class="link-dark mx-2" style="text-decoration: none;">{{postsU.userUser}}</a>
+            <div>
+                <span>> {{UsersPub.bio}}</span>
+            </div>
+            <div class="d-flex flex-row-reverse">
+                <button type="button" class="btn btn-info my-1" data-bs-toggle="modal" data-bs-target="#editar">
+                    Editar perfil
+                </button>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">                           
+                            <form action="/userinfo" method="post" enctype="multipart/form-data">
+                                <label for="profpic">Foto de perfil:</label>
+                                <input type="file" name="profpic" value="teste" class="form-control">
+                                <label for="bio" class="mt-2">Bio:</label>
+                                <input type="text" name="bio" class="form-control">                            
+                                <button type="submit" class="btn btn-success mt-2">Confirmar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            {{#each postsU}}
+                <div class="card">
+                    <div class="card card-body mb-2">
+                        <img src="images/teste.png" class="img-fluid"  style="width: 60px;height: 60px;object-fit: cover;border-radius: 100px;">                        
+                        <div style="color: #5b9bd1;font-size: 14px;font-weight: 600;">
+                            <a href="#" style="text-decoration: none;">{{userUser}}</a>
+                        </div>
+                        {{post}}
+                        <form action="/home/delete/{{_id}}/{{userId}}" method="POST">
+                            <button>Apagar</button>
+                        </form>
+                        <hr>
+                        <small>{{posted}}</small>
+                    </div>
+                </div>
+            {{else}}
+            aqui está vazio :/
+            {{/each}}
         </div>
         
         <div class="col-sm-2 bg-success">

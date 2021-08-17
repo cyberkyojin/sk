@@ -10,6 +10,7 @@ const User = new mongoose.Schema({
         type: String,
         required: true
     }
+    
 })
 
 mongoose.model('users', User)

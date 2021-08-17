@@ -1,14 +1,14 @@
 <div class="col-sm-8 bg-primary offset-sm-1">
     {{#each search}}
         <div class="card">
-        <div class="card card-body mb-2">
-            {{post}}
-            <form action="/home/delete/{{_id}}" method="POST">
-            <button>Apagar</button>
-            </form>
-            <hr>
-            <small>{{posted}}</small>
-        </div>
+            <div class="card card-body mb-2">
+                {{post}}
+                <form action="/home/delete/{{_id}}" method="POST">
+                <button>Apagar</button>
+                </form>
+                <hr>
+                <small>{{posted}}</small>
+            </div>
         </div>
     {{else}}
         nenhum resultado encontrado :(
